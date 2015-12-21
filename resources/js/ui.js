@@ -11,6 +11,20 @@ function( $, IpSubnetCalculator )
 		$( '#' + elementName ).slideDown( 'fast' );
 	};
 
+	$('#ip_calculate_exclusions_button').click(
+		function() {
+
+			var result = IpSubnetCalculator.calculateExclusions(
+						$( '#ip_calculate_exclusions_list' ).val()
+					);
+			var msg = '';
+			for(var i = 0; i < result.length; i++ )
+			{
+				msg += result[i] + ',';
+			}
+
+			showResult( 'ip_calculate_exclusions_result', msg );
+		});
 
 	$( '#ip_calculate_range_button' ).click(
 			function()
@@ -31,6 +45,7 @@ function( $, IpSubnetCalculator )
 								'<table>' +
 								'<thead><tr><td>IP</td><td>Prefix</td><td>Subnet Mask</td></tr></thead>' +
 								'<tfoot><tr><td>IP</td><td>Prefix</td><td>Subnet Mask</td></tr></tfoot>';
+					var plainText = '';
 
 					for( i = 0; i < result.length; i++ )
 					{
@@ -39,9 +54,11 @@ function( $, IpSubnetCalculator )
 									'<td>' + '/' + result[ i ].prefixSize + '</td>' +
 									'<td>' + result[ i ].prefixMaskStr + '</td>' +
 									"</tr>\n";
+						plainText += result[i].ipLowStr + '/' + result[i].prefixSize + ',';
 					}
 
 					msg += "</tbody></table>\n";
+					msg += "<code>" + plainText + "</code>";
 
 					showResult( 'ip_calculate_range_result', msg );
 				}

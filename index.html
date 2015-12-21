@@ -29,11 +29,18 @@
 			<div class="main wrapper clearfix">
 
 				<article>
-					<header>
-						<h1>Calculate IP Subnets and Netmasks</h1>
-						<p>Use these tools to calculate subnets and netmasks. Source at <a href='https://github.com/franksrevenge/IPSubnetCalculator'>GitHub</a>.</p>
-						<p>Compatible with <a href='http://nodejs.org/'>Node.js</a> (Common-JS like), <a href='http://requirejs.org/'>Require.js</a> (AMD), and direct use. See <a href='https://github.com/franksrevenge/IPSubnetCalculator/blob/master/README.md'>readme</a> for instructions.</p>
-					</header>
+					<section>
+						<form id='ip_calculate_exclusions' class='calculator'>
+							<h2>Exclusions</h2>
+							
+								
+							<input type='text' name='ip_calculate_exclusions_list' id='ip_calculate_exclusions_list' placeholder='IPs and masks to exclude, comma separated' />
+							
+							<input type='button' value='Calculate' id='ip_calculate_exclusions_button' />
+							
+							<pre class='result' id='ip_calculate_exclusions_result' style='display: none;'></pre>
+						</form>
+					</section>
 
 					<section>
 						<form id='ip_calculate_range' class='calculator'>
